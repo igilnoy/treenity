@@ -5,13 +5,14 @@ import { getItemProps, getExpandedProps, useExpanded, useLoading } from '../src'
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import { DualRing } from 'react-awesome-spinners';
 import randomWords from 'random-words';
+import uniqid from 'uniqid';
 
 const api = {
   load: ({ depth, total = 20 }) => {
     const items = [];
     for (let i = 0; i < total; i++) {
       const label = randomWords();
-      items.push({ itemId: `${label}-${new Date().valueOf()}`, label, depth });
+      items.push({ itemId: `${label}-${uniqid()}`, label, depth });
     }
 
     return items;
@@ -74,7 +75,7 @@ const withLoading = () => {
               setLoading(itemId, false);
               return loadNewData(data, { itemId, depth });
             });
-          }, 3000);
+          }, 1000);
         }
         return data;
       });

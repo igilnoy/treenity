@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
+import uniqid from 'uniqid';
 
 export const THEME = {
   LIGHT: {
@@ -20,6 +21,7 @@ export const Wrapper = styled.div`
   color: ${({ theme }) => theme.surfaceText};
   background-color: ${({ theme }) => theme.surface};
   padding: 10px;
+  height: 80vh;
 `;
 
 export const StyledItem = styled.div`
@@ -61,16 +63,18 @@ const Line = styled.div`
   height: 37px;
 `;
 
-export const StyledItemWithLine = styled(StyledItem).attrs(({ depth, children }) => ({
-  children: (
-    <>
-      {Array.apply(null, Array(depth)).map(() => (
-        <Line depth={depth} noLine={!depth} />
-      ))}
-      {children}
-    </>
-  ),
-}))`
+export const StyledItemWithLine = styled(StyledItem).attrs(({ depth, children }) => {
+  return {
+    children: (
+      <React.Fragment>
+        {Array.apply(null, Array(depth)).map(() => (
+          <Line key={`${uniqid()}`} depth={depth} noLine={!depth} />
+        ))}
+        {children}
+      </React.Fragment>
+    ),
+  };
+})`
   padding: 0;
   margin: 0;
 `;
