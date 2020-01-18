@@ -1,38 +1,44 @@
 import { memoize, values } from 'lodash';
 
+const selectorFnDefault = (type, elem) => {
+  switch (type) {
+    case 'ArrowUp':
+      return elem.previousSibling;
+    case 'ArrowDown':
+      return elem.nextSibling;
+  }
+};
+
 const getKeyboardProps = memoize(
   (itemId, setSelected, setExpanded) => ({
-    getKeyboardProps: () => ({
+    getKeyboardProps: (selectorFn = selectorFnDefault) => ({
       onKeyDown: e => {
         e.persist();
-
+        let elem;
         switch (e.key) {
           case 'ArrowRight':
             setExpanded && setExpanded(itemId, true);
             break;
-            return;
           case 'ArrowLeft':
             setExpanded && setExpanded(itemId, false);
             break;
-            return;
           case 'Enter':
             setSelected && setSelected(itemId);
             break;
-            return;
           case 'ArrowUp':
-            if (e.target.previousSibling) {
-              e.target.previousSibling.click();
-              e.target.previousSibling.focus();
+            elem = selectorFn('ArrowUp', e.target);
+            if (elem) {
+              elem.click();
+              elem.focus();
             }
             break;
-            return;
           case 'ArrowDown':
-            if (e.target.nextSibling) {
-              e.target.nextSibling.click();
-              e.target.nextSibling.focus();
+            elem = selectorFn('ArrowDown', e.target);
+            if (elem) {
+              elem.click();
+              elem.focus();
             }
             break;
-            return;
           default:
             return;
         }
