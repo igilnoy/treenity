@@ -4,19 +4,35 @@ const getKeyboardProps = memoize(
   (itemId, setSelected, setExpanded) => ({
     getKeyboardProps: () => ({
       onKeyDown: e => {
-        switch (e.keyCode) {
-          case 39:
+        e.persist();
+
+        switch (e.key) {
+          case 'ArrowRight':
             setExpanded && setExpanded(itemId, true);
             break;
-          case 37:
+            return;
+          case 'ArrowLeft':
             setExpanded && setExpanded(itemId, false);
             break;
-          case 40:
-            setSelected && setSelected();
+            return;
+          case 'Enter':
+            setSelected && setSelected(itemId);
             break;
-          case 38:
-            setSelected && setSelected();
+            return;
+          case 'ArrowUp':
+            if (e.target.previousSibling) {
+              e.target.previousSibling.click();
+              e.target.previousSibling.focus();
+            }
             break;
+            return;
+          case 'ArrowDown':
+            if (e.target.nextSibling) {
+              e.target.nextSibling.click();
+              e.target.nextSibling.focus();
+            }
+            break;
+            return;
           default:
             return;
         }
