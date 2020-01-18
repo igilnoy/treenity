@@ -1,6 +1,6 @@
 import React, { memo, Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useSelected, useExpanded, getItemProps, getSelectedProps, getExpandedProps } from '../src';
+import { useSelected, useExpanded, getItemProps } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import { areEqualDebug } from '../src/helpers';
 import randomWords from 'random-words';
@@ -76,12 +76,12 @@ export const data = [
 ];
 
 const Item = memo(props => {
-  const { noChildren, label, depth, expanded, selected, visible } = props;
+  const { noChildren, label, depth, expanded, selected, visible, getSelectedProps, getExpandedProps } = props;
   return (
     <>
       {visible ? (
-        <StyledItem {...getSelectedProps(props)} {...{ depth, selected }}>
-          <StyledButton {...getExpandedProps(props)} {...{ expanded }}>
+        <StyledItem {...getSelectedProps()} {...{ depth, selected }}>
+          <StyledButton {...getExpandedProps()} {...{ expanded }}>
             {!noChildren ? '▸' : ''}
           </StyledButton>
           {label}

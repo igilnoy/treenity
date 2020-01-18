@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import React, { memo, useCallback, useState, useEffect } from 'react';
 import { areEqualDebug } from '../src/helpers';
-import { getItemProps, getExpandedProps, useExpanded, useLoading } from '../src';
+import { getItemProps, useExpanded, useLoading } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import { DualRing } from 'react-awesome-spinners';
 import randomWords from 'random-words';
@@ -20,9 +20,9 @@ const api = {
 };
 
 const Item = memo(props => {
-  const { itemId, noChildren, label, depth, expanded, selected, setLoading, loading, visible, onExpand } = props;
+  const { itemId, noChildren, label, depth, expanded, selected, setLoading, loading, visible, onExpand, getExpandedProps } = props;
 
-  const { onClick } = getExpandedProps(props);
+  const { onClick } = getExpandedProps();
   const onExpandClick = useCallback(() => {
     onClick();
     !expanded && onExpand({ itemId, depth });

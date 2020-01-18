@@ -3,7 +3,7 @@ import { FixedSizeList as List, areEqual } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import styled, { ThemeProvider } from 'styled-components';
 import { areEqualDebug } from '../src/helpers';
-import { getExpandedProps, useExpanded, useLoading, enhancerWithMore } from '../src';
+import { useExpanded, useLoading, enhancerWithMore } from '../src';
 import { DualRing } from 'react-awesome-spinners';
 
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
@@ -21,11 +21,11 @@ const RowNode = memo(({ index, style, data }) => {
 const generateItemKey = (index, { items }) => items[index].itemId;
 
 const Item = memo(props => {
-  const { noChildren, label, depth, expanded, visible } = props;
+  const { noChildren, label, depth, expanded, visible, getExpandedProps } = props;
   return (
     <>
       {visible ? (
-        <StyledItem {...getExpandedProps(props)} depth={depth}>
+        <StyledItem {...getExpandedProps()} depth={depth}>
           <StyledButton expanded={expanded}>{!noChildren ? '▸' : ''}</StyledButton>
           {label}
         </StyledItem>
