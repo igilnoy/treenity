@@ -39,7 +39,7 @@ const Item = memo(props => {
           {loading ? (
             <DualRing size={16} width={35} height={26} color={THEME.DARK.primary} />
           ) : (
-            <StyledButton onClick={onExpandClick} {...{ expanded }}>
+            <StyledButton onClick={onExpandClick} expanded={expanded}>
               {!noChildren ? '▸' : ''}
             </StyledButton>
           )}

@@ -1,8 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { isArray } from 'lodash';
+import getLoadingProps from '../props/getLoadingProps';
 
 export const useLoading = () => {
   const [loadingIds, setLoadingIds] = useState(new Set());
+
+  useEffect(() => () => getLoadingProps.cache.clear(), []);
 
   const setLoading = useCallback(
     (itemIds, isProgress) => {
