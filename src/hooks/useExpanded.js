@@ -1,9 +1,12 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import { isArray } from 'lodash';
+import getExpandedProps from '../props/getExpandedProps';
 
 export const useExpanded = () => {
   const lastCollapsedDepth = useRef();
   const [expandedIds, setExpandedIds] = useState(new Set());
+
+  useEffect(() => () => getExpandedProps.cache.clear(), []);
 
   const setExpanded = useCallback(
     (nodeIds, isExpanded) => {

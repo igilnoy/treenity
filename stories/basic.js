@@ -1,15 +1,16 @@
 import React, { memo } from 'react';
 import { areEqualDebug } from '../src/helpers';
-import { getItemProps, getSelectedProps, getExpandedProps, useExpanded, useSelected } from '../src';
+import { getItemProps, useExpanded, useSelected } from '../src';
 import data from './mock';
+import getKeyboardProps from '../src/props/getKeyboardProps';
 
 const Item = memo(props => {
-  const { noChildren, label, depth, expanded, selected, visible } = props;
+  const { noChildren, label, depth, expanded, selected, visible, getSelectedProps, getExpandedProps, getKeyboardProps } = props;
   return (
     <>
       {visible ? (
-        <div {...getSelectedProps(props)} style={{ marginLeft: depth * 10, backgroundColor: selected ? '#84F28F' : '#FFFFFF' }}>
-          <button {...getExpandedProps(props)} style={{ opacity: noChildren ? 0 : 1 }}>
+        <div {...getKeyboardProps()} {...getSelectedProps()} style={{ marginLeft: depth * 10, backgroundColor: selected ? '#84F28F' : '#FFFFFF' }}>
+          <button {...getExpandedProps()} style={{ opacity: noChildren ? 0 : 1 }}>
             {expanded ? '-' : '+'}
           </button>
           {label}

@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import React, { memo } from 'react';
 import { areEqualDebug } from '../src/helpers';
-import { getItemProps, getSelectedProps, getExpandedProps, useExpanded, useSelected } from '../src';
+import { getItemProps, useExpanded, useSelected } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 
 const data = [
@@ -19,12 +19,12 @@ const data = [
 ];
 
 const Item = memo(props => {
-  const { noChildren, label, depth, expanded, selected, visible } = props;
+  const { noChildren, label, depth, expanded, selected, visible, getSelectedProps, getExpandedProps } = props;
   return (
     <>
       {visible ? (
-        <StyledItem {...getSelectedProps(props)} {...{ depth, selected }}>
-          <StyledButton {...getExpandedProps(props)} {...{ expanded }}>
+        <StyledItem {...getSelectedProps()} {...{ depth, selected }}>
+          <StyledButton {...getExpandedProps()} {...{ expanded }}>
             {!noChildren ? '▸' : ''}
           </StyledButton>
           {label}

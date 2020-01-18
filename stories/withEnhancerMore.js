@@ -1,6 +1,6 @@
 import React, { memo, useState, Fragment } from 'react';
 import { areEqualDebug } from '../src/helpers';
-import { enhancerWithMore, useExpanded, getExpandedProps } from '../src';
+import { enhancerWithMore, useExpanded } from '../src';
 import mock from './mock';
 import styled from 'styled-components';
 
@@ -30,13 +30,13 @@ const Info = styled.p`
 `;
 
 const Item = memo(props => {
-  const { noChildren, expanded, visible, depth, label } = props;
+  const { noChildren, expanded, visible, depth, label, getExpandedProps } = props;
   return (
     <>
       {visible ? (
         <Li depth={depth} noChildren={noChildren}>
           {label}
-          {!noChildren && <Toggle {...getExpandedProps(props)}>[{expanded ? '-' : '+'}]</Toggle>}
+          {!noChildren && <Toggle {...getExpandedProps()}>[{expanded ? '-' : '+'}]</Toggle>}
         </Li>
       ) : null}
     </>
