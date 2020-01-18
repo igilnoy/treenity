@@ -11,7 +11,7 @@ const selectorFnDefault = (type, elem) => {
 
 const getKeyboardProps = memoize(
   (itemId, setSelected, setExpanded) => ({
-    getKeyboardProps: (selectorFn = selectorFnDefault) => ({
+    getKeyboardProps: ({ selectorFn = selectorFnDefault }) => ({
       onKeyDown: e => {
         e.persist();
         let elem;
