@@ -2,6 +2,7 @@ import React from 'react';
 import getSelectedProps from './getSelectedProps';
 import getExpandedProps from './getExpandedProps';
 import getLoadingProps from './getLoadingProps';
+import getKeyboardProps from './getKeyboardProps';
 
 const getItemProps = ({
   itemId,
@@ -38,6 +39,7 @@ const getItemProps = ({
     ...(setSelected ? getSelectedProps(itemId, setSelected) : {}),
     ...(setExpanded ? getExpandedProps(itemId, setExpanded, nextProps.expanded) : {}),
     ...(setLoading ? getLoadingProps(itemId, setLoading) : {}),
+    ...getKeyboardProps(itemId, setSelected, setExpanded),
   };
 };
 
