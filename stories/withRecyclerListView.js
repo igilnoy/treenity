@@ -9,7 +9,7 @@ const Item = memo(props => {
   return (
     <>
       {visible ? (
-        <div {...getSelectedProps()} style={{ marginLeft: depth * 10, backgroundColor: selected ? '#84F28F' : '#FFFFFF' }}>
+        <div {...getSelectedProps()} style={{ marginLeft: depth * 10, backgroundColor: selected ? '#84F28F' : '#EEE' }}>
           <button {...getExpandedProps()} style={{ opacity: noChildren ? 0 : 1 }}>
             {expanded ? '-' : '+'}
           </button>
@@ -34,7 +34,7 @@ const Basic = () => {
     },
     (type, dim) => {
       dim.width = 500;
-      dim.height = 40;
+      dim.height = 25;
     }
   );
 
@@ -52,6 +52,7 @@ const Basic = () => {
 
   return (
     <RecyclerListView
+      renderAheadOffset={0}
       layoutProvider={layoutProvider}
       dataProvider={initDataProvider.cloneWithRows(data)}
       rowRenderer={rowRenderer}
