@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { areEqualDebug } from '../src/helpers';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import data from './mock';
-import getKeyboardProps from '../src/props/getKeyboardProps';
 
 const Item = memo(props => {
   const { noChildren, label, depth, expanded, selected, visible, getSelectedProps, getExpandedProps, getKeyboardProps } = props;
