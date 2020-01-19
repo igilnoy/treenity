@@ -62,7 +62,7 @@ const More = ({ depth, noChildren, onMore, ...props }) => {
 
 const getItemPropsEnhanced = enhancerWithMore();
 
-const WithEnhancerMore = () => {
+export default () => {
   const [data, setData] = useState(mock);
   const expandedProps = useExpanded();
 
@@ -90,13 +90,11 @@ const WithEnhancerMore = () => {
     const itemToClone = { ...items[itemCloneIndex], label: 'new stuff', noChildren: true };
 
     setData(data => {
-      const nextData = [
+      return [
         ...data.slice(0, itemPositionIndex),
         { ...itemToClone, itemId: `${itemToClone.itemId}${new Date().getUTCMilliseconds()}` },
         ...data.slice(itemPositionIndex),
       ];
-
-      return nextData;
     });
   };
 
@@ -113,5 +111,3 @@ const WithEnhancerMore = () => {
     </>
   );
 };
-
-export default WithEnhancerMore;

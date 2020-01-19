@@ -34,7 +34,7 @@ const Item = memo(props => {
   );
 }, areEqualDebug);
 
-const withStyledComponents = () => {
+export default () => {
   const selectedProps = useSelected();
   const expandedProps = useExpanded();
 
@@ -48,5 +48,3 @@ const withStyledComponents = () => {
     </ThemeProvider>
   );
 };
-
-export default withStyledComponents;

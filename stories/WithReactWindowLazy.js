@@ -39,7 +39,7 @@ const StyledMore = styled(StyledItem)`
   font-weight: 500;
 `;
 
-const More = memo(({ depth, visible, setLoading, loading, itemId, ...props }) => {
+const More = memo(({ depth, visible, setLoading, loading, itemId }) => {
   const onClick = () => {
     setLoading(itemId, true);
     setTimeout(() => {
@@ -59,7 +59,7 @@ const More = memo(({ depth, visible, setLoading, loading, itemId, ...props }) =>
   );
 }, areEqualDebug);
 
-const withReactWindowLazy = () => {
+export default () => {
   const expandedProps = useExpanded();
   const loadingProps = useLoading();
 
@@ -88,5 +88,3 @@ const withReactWindowLazy = () => {
     </ThemeProvider>
   );
 };
-
-export default withReactWindowLazy;

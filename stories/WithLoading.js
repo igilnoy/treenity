@@ -26,11 +26,11 @@ const Item = memo(props => {
   const onExpandClick = useCallback(() => {
     onClick();
     !expanded && onExpand({ itemId, depth });
-  }, [onClick]);
+  }, [onClick, itemId, depth, expanded, onExpand]);
 
   useEffect(() => {
     setLoading(loading);
-  }, [loading]);
+  }, [loading, setLoading]);
 
   return (
     <>
@@ -60,7 +60,7 @@ const loadNewData = (data, { itemId, depth }) => {
   return [...data.slice(0, itemIndex + 1), ...api.load({ depth: depth + 1 }), ...data.slice(itemIndex + 1)];
 };
 
-const withLoading = () => {
+export default () => {
   const [data, setData] = useState(api.load({ depth: 0, total: 3 }));
   const expandedProps = useExpanded();
   const { setLoading, ...loadingProps } = useLoading();
@@ -93,5 +93,3 @@ const withLoading = () => {
     </ThemeProvider>
   );
 };
-
-export default withLoading;

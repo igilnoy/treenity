@@ -19,7 +19,7 @@ const Item = memo(props => {
   );
 }, areEqualDebug);
 
-const Basic = () => {
+export default () => {
   const selectedProps = useSelected();
   const expandedProps = useExpanded();
 
@@ -31,5 +31,3 @@ const Basic = () => {
     </>
   );
 };
-
-export default Basic;

@@ -1,21 +1,21 @@
-import basicStory from './basic';
-import withStyledComponentsStory from './withStyledComponents';
-import withTreeDataStructureStory from './withTreeDataStructure';
-import withReactWindowStory from './withReactWindow';
-import WithEnhancerMoreStory from './withEnhancerMore';
-import WithLineStory from './withLine';
-import WithLoadingStory from './withLoading';
-import withReactWindowLazyStory from './withReactWindowLazy';
-import withRecyclerListViewStory from './withRecyclerListView';
+import BasicStory from './basic';
+import WithStyledComponentsStory from './WithStyledComponents';
+import WithTreeDataStructureStory from './WithTreeDataStructure';
+import WithReactWindowStory from './WithReactWindow';
+import WithEnhancerMoreStory from './WithEnhancerMore';
+import WithLineStory from './WithLine';
+import WithLoadingStory from './WithLoading';
+import WithReactWindowLazyStory from './WithReactWindowLazy';
+import WithRecyclerListViewStory from './WithRecyclerListView';
 
 export default { title: 'Tree' };
 
-export const basic = basicStory;
-export const withStyledComponents = withStyledComponentsStory;
-export const withTreeDataStructure = withTreeDataStructureStory;
-export const withReactWindow = withReactWindowStory;
+export const basic = BasicStory;
+export const withStyledComponents = WithStyledComponentsStory;
+export const withTreeDataStructure = WithTreeDataStructureStory;
+export const withReactWindow = WithReactWindowStory;
 export const WithEnhancerMore = WithEnhancerMoreStory;
 export const WithLine = WithLineStory;
 export const WithLoading = WithLoadingStory;
-export const withReactWindowLazy = withReactWindowLazyStory;
-export const withRecyclerListView = withRecyclerListViewStory;
+export const withReactWindowLazy = WithReactWindowLazyStory;
+export const withRecyclerListView = WithRecyclerListViewStory;

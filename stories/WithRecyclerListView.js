@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo } from 'react';
 import { areEqualDebug } from '../src/helpers';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import mock from './mock';
@@ -24,12 +24,12 @@ const rowRenderer = (type, item) => {
   return <Item {...item} />;
 };
 
-const Basic = () => {
+const WithRecyclerListView = () => {
   const selectedProps = useSelected();
   const expandedProps = useExpanded();
 
   const layoutProvider = new LayoutProvider(
-    index => {
+    () => {
       return 'TREE';
     },
     (type, dim) => {
@@ -61,4 +61,4 @@ const Basic = () => {
   );
 };
 
-export default Basic;
+export default WithRecyclerListView;
