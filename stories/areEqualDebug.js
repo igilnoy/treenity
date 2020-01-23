@@ -25,4 +25,4 @@ const areEqualDebug = (prevProps, nextProps) => {
   return isEqual;
 };
 
-export { areEqualDebug };
+export default areEqualDebug;

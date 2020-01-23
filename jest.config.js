@@ -5,16 +5,17 @@ module.exports = Object.assign(defaults, {
     name: 'TREENITY',
     color: 'green',
   },
+  verbose: true,
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['test/*.js'],
+  collectCoverageFrom: ['src/**/*.js'],
   coverageDirectory: 'test/coverage',
   coverageThreshold: {
     global: {
+      statements: 90,
       branches: 90,
       functions: 90,
       lines: 90,
-      statements: 90,
     },
   },
 });

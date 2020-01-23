@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import mock from './mock';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview/web';

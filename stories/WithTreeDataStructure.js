@@ -2,7 +2,7 @@ import React, { memo, Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { useSelected, useExpanded, getItemProps } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import randomWords from 'random-words';
 
 export const data = [

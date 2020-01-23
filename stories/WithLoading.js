@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import React, { memo, useCallback, useState, useEffect } from 'react';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { getItemProps, useExpanded, useLoading } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import { DualRing } from 'react-awesome-spinners';

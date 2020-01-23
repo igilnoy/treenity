@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { FixedSizeList as List, areEqual } from 'react-window';
 import { ThemeProvider } from 'styled-components';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import mock from './mock';
