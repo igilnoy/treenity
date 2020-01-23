@@ -6,17 +6,17 @@ import WithLineStory from './WithLine';
 import WithLoadingStory from './WithLoading';
 import WithReactWindowLazyStory from './WithReactWindowLazy';
 import WithRecyclerListViewStory from './WithRecyclerListView';
-import WithSectionsStory from './WithSections';
-import WithEnhancerSectionReactWindowStory from './WithEnhancerSectionReactWindow';
+import WithSectionsHOCStory from './WithSections';
+import WithEnhancerSectionStory from './WithEnhancerSection';
 
 export default { title: 'Tree' };
 
 export const basic = BasicStory;
 export const withStyledComponents = WithStyledComponentsStory;
 export const withTreeDataStructure = WithTreeDataStructureStory;
-export const WithSections = WithSectionsStory;
+export const WithSectionsHOC = WithSectionsHOCStory;
+export const WithEnhancerSection = WithEnhancerSectionStory;
 export const withReactWindow = WithReactWindowStory;
-export const WithEnhancerSectionReactWindow = WithEnhancerSectionReactWindowStory;
 export const withReactWindowLazy = WithReactWindowLazyStory;
 export const WithLine = WithLineStory;
 export const WithLoading = WithLoadingStory;

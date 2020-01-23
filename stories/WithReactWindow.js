@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { areEqualDebug } from '../src/helpers';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
-import data from './mock';
+import mock from './mock';
 
 const RowNode = memo(({ index, style, data }) => {
   const { items } = data;
@@ -39,7 +39,7 @@ export default () => {
   const selectedProps = useSelected();
   const expandedProps = useExpanded();
 
-  const items = data.reduce((acc, { depth, ...item }) => {
+  const items = mock.reduce((acc, { depth, ...item }) => {
     const { visible, ...props } = getItemProps({ depth, ...item, ...selectedProps, ...expandedProps });
 
     if (visible) acc.push({ visible, ...props });
