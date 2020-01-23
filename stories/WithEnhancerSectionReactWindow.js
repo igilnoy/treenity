@@ -32,6 +32,7 @@ const Info = styled.p`
 
 const Item = memo(props => {
   const { noChildren, expanded, visible, selected, depth, label, getExpandedProps, getSelectedProps } = props;
+
   return (
     <>
       {visible ? (
@@ -104,7 +105,7 @@ export default () => {
     <>
       <Ul>
         {items.map(({ footer, header, ...item }) => (
-          <Fragment key={item.itemId + 'fragment'}>{footer ? <Footer {...item} /> : header ? <Header {...item} /> : <Item {...item} />}</Fragment>
+          <Fragment key={item.itemId + '-fragment'}>{footer ? <Footer {...item} /> : header ? <Header {...item} /> : <Item {...item} />}</Fragment>
         ))}
       </Ul>
       <Info>
