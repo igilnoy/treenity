@@ -3,13 +3,13 @@ import { FixedSizeList as List, areEqual } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import styled, { ThemeProvider } from 'styled-components';
 import { areEqualDebug } from '../src/helpers';
-import { useExpanded, useLoading, enhancerWithMore } from '../src';
+import { useExpanded, useLoading, enhancedGetItemPropsWithSections } from '../src';
 import { DualRing } from 'react-awesome-spinners';
 
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 import data from './mock';
 
-const getItemPropsEnhanced = enhancerWithMore();
+const getItemPropsEnhanced = enhancedGetItemPropsWithSections();
 
 const RowNode = memo(({ index, style, data }) => {
   const { items } = data;

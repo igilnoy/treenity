@@ -1,6 +1,6 @@
 export default [
-  { itemId: 'Treenity', label: 'Treenity', depth: 0, more: true },
-  { itemId: 'src', label: 'src', depth: 1, more: true },
+  { itemId: 'Treenity', label: 'Treenity', depth: 0, more: true, itemHeader: true, itemFooter: true },
+  { itemId: 'src', label: 'src', depth: 1, itemFooter: true, itemHeader: true },
   { itemId: 'components', label: 'components', depth: 2 },
   { itemId: 'grid', label: 'grid', depth: 3 },
   { itemId: 'gridIndex', label: 'index.js', depth: 4, noChildren: true },

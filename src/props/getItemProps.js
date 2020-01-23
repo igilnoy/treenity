@@ -4,21 +4,7 @@ import getExpandedProps from './getExpandedProps';
 import getLoadingProps from './getLoadingProps';
 import getKeyboardProps from './getKeyboardProps';
 
-const getItemProps = ({
-  itemId,
-  depth,
-  setExpanded,
-  setSelected,
-  setLoading,
-  isExpanded,
-  isVisible,
-  isSelected,
-  isLoading,
-  isLastTreeItem: isLast, // TODO: document and think if to pass it on
-  isFirstTreeItem: isFirst, // TODO: document and think if to pass it on
-  onRender, // // TODO: Think if needed
-  ...props
-}) => {
+const getItemProps = ({ itemId, depth, setExpanded, setSelected, setLoading, isExpanded, isVisible, isSelected, isLoading, ...props }) => {
   const nextProps = {
     itemId,
     depth,
@@ -31,8 +17,6 @@ const getItemProps = ({
     ...(setExpanded ? { setExpanded } : {}),
     ...props,
   };
-
-  //onRender && onRender({ ...nextProps, ...(isLast !== undefined ? { isLast } : {}), ...(isFirst !== undefined ? { isFirst } : {}) });
 
   return {
     ...nextProps,
