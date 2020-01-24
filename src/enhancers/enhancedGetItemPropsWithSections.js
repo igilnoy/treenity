@@ -10,7 +10,7 @@ const getHeaderItemId = itemId => `${itemId}_${TYPE_HEADER}_ITEM`;
 const isHeader = type => type === TYPE_HEADER;
 const isFooter = type => type === TYPE_FOOTER;
 
-const getItem = (props, { Item }) => (Item ? <Item {...props} /> : props);
+const getItem = ({itemId, ...props}, { Item }) => (Item ? <Item key={itemId} itemId={itemId} {...props} /> : props);
 
 const getSectionItem = (type = TYPE_FOOTER, itemProps, renderedProps, { Header, Footer }) => {
   const { origItemId, origItemProps, depth } = itemProps;
