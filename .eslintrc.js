@@ -6,7 +6,7 @@ module.exports = {
     jest: true,
     browser: true,
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'react-app'],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended', 'plugin:react/recommended'],
   globals: {
     ENV: true,
     React: false,
