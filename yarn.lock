@@ -10842,6 +10842,11 @@ tr46@^1.0.1:
   dependencies:
     punycode "^2.1.0"
 
+travis@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/travis/-/travis-0.1.1.tgz#80fe1c36f6f3b739fce07e6063838ce436357d60"
+  integrity sha1-gP4cNvbztzn84H5gY4OM5DY1fWA=
+
 ts-object-utils@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"

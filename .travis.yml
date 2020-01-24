@@ -6,3 +6,11 @@ cache:
     - node_modules
 script:
   - yarn test
+deploy:
+  provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_API_TOKEN
+  skip_cleanup: true
+  tag: next
+  on:
+    tags: true

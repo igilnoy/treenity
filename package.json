@@ -40,6 +40,7 @@
     "react-window": "^1.8.5",
     "recyclerlistview": "^2.0.12",
     "styled-components": "^4.4.1",
+    "travis": "^0.1.1",
     "uniqid": "^5.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
@@ -50,5 +51,8 @@
   },
   "peerDependencies": {
     "react": ">=16.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
