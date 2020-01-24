@@ -18,4 +18,5 @@ module.exports = Object.assign(defaults, {
       lines: 90,
     },
   },
+  setupFilesAfterEnv: ['<rootDir>test/setupTests.js'],
 });

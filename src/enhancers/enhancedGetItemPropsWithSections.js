@@ -12,8 +12,9 @@ const isFooter = type => type === TYPE_FOOTER;
 
 const getItem = (props, { Item }) => (Item ? <Item {...props} /> : props);
 
-const getSectionItem = (type = TYPE_FOOTER, itemProps, { Header, Footer }) => {
-  const { itemId: renderedItemId, origItemId, origItemProps, depth } = itemProps;
+const getSectionItem = (type = TYPE_FOOTER, itemProps, renderedProps, { Header, Footer }) => {
+  const { origItemId, origItemProps, depth } = itemProps;
+  const { itemId: renderedItemId } = renderedProps;
   const { isLoading, isSelected } = origItemProps;
   const itemId = isHeader(type) ? getHeaderItemId(origItemId) : getFooterItemId(origItemId);
 
@@ -34,8 +35,8 @@ const getSectionItem = (type = TYPE_FOOTER, itemProps, { Header, Footer }) => {
   return isHeader(type) && Header ? <Header {...props} key={itemId} /> : isFooter(type) && Footer ? <Footer {...props} key={itemId} /> : props;
 };
 
-const getHeaderSection = (itemProps, options) => getSectionItem(TYPE_HEADER, itemProps, options);
-const getFooterSection = (itemProps, options) => getSectionItem(TYPE_FOOTER, itemProps, options);
+const getHeaderSection = (itemProps, props, options) => getSectionItem(TYPE_HEADER, itemProps, props, options);
+const getFooterSection = (itemProps, props, options) => getSectionItem(TYPE_FOOTER, itemProps, props, options);
 
 const enhancedGetItemPropsWithSections = () => {
   let footers = [];
@@ -49,32 +50,26 @@ const enhancedGetItemPropsWithSections = () => {
     const items = [getItem(itemProps, options)];
     const { depth: lastDepthInFooters } = footers[footers.length - 1] || {};
 
-    if (lastDepthInFooters >= depth) items.unshift(getFooterSection(footers.pop(), options));
-    if (headers.length) items.unshift(getHeaderSection(headers.pop(), options));
+    if (lastDepthInFooters >= depth) items.unshift(getFooterSection(footers.pop(), itemProps, options));
+    if (headers.length) items.unshift(getHeaderSection(headers.pop(), itemProps, options));
 
     isAddToFooters(itemProps) && footers.push({ depth, origItemId: itemId, expanded, origItemProps: props });
     isAddToHeaders(itemProps) && headers.push({ depth, origItemId: itemId, expanded, origItemProps: props });
 
     if (isLast) {
       headers = headers.reverse().filter(({ expanded, ...headerProps }) => {
-        expanded && items.push(getHeaderSection(headerProps, options));
+        expanded && items.push(getHeaderSection(headerProps, itemProps, options));
         return false;
       });
 
       footers = footers.reverse().filter(({ expanded, ...footerProps }) => {
-        expanded && items.push(getFooterSection(footerProps, options));
+        expanded && items.push(getFooterSection(footerProps, itemProps, options));
         return false;
       });
     }
 
     return items;
   };
-};
-
-export const withSections = (Item, { Header, Footer }) => {
-  const getItems = enhancedGetItemPropsWithSections();
-
-  return props => getItems(props, { Item, Header, Footer });
 };
 
 export default enhancedGetItemPropsWithSections;
