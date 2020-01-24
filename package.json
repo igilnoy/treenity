@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint ./src ./stories",
     "storybook": "start-storybook",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm version patch && git push --tag"
   },
   "repository": "git@github.com:treenity-js/treenity.git",
   "author": "gil noy <gilnoy@yahoo.com>",
