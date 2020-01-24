@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import React, { memo } from 'react';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { getItemProps, useExpanded, useSelected } from '../src';
 import { StyledItem, StyledButton, Wrapper, THEME } from './styled.helpers';
 

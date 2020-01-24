@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { FixedSizeList as List, areEqual } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import styled, { ThemeProvider } from 'styled-components';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { useExpanded, useLoading, enhancedGetItemPropsWithSections } from '../src';
 import { DualRing } from 'react-awesome-spinners';
 

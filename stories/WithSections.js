@@ -1,5 +1,5 @@
 import React, { memo, Fragment } from 'react';
-import { areEqualDebug } from '../src/helpers';
+import areEqualDebug from './areEqualDebug';
 import { withSections, useExpanded, useLoading, useSelected } from '../src';
 import mock from './mock';
 import styled from 'styled-components';
