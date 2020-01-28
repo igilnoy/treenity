@@ -1,17 +1,19 @@
 {
   "name": "treenity",
-  "version": "0.1.8",
-  "main": "src/index.js",
+  "version": "0.0.0-development",
+  "main": "dist/treenity.js",
   "scripts": {
     "lint": "eslint ./src ./stories",
     "storybook": "start-storybook",
     "test": "jest",
-    "publish": "npm version patch && git push --tag"
+    "build": "babel src --out-file dist/treenity.js --source-maps",
+    "semantic-release": "semantic-release"
   },
   "repository": "git@github.com:treenity-js/treenity.git",
   "author": "gil noy <gilnoy@yahoo.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
@@ -40,8 +42,9 @@
     "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "recyclerlistview": "^2.0.12",
+    "semantic-release": "^16.0.3",
+    "semantic-release-cli": "^5.2.3",
     "styled-components": "^4.4.1",
-    "travis": "^0.1.1",
     "uniqid": "^5.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
