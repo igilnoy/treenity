@@ -39,20 +39,17 @@ yarn add treenity
 import React, { memo } from 'react';
 import { getItemProps, useExpanded, useSelected } from 'treenity';
 
-const Item = memo(({ noChildren, label, depth, expanded, selected, visible, ...props }) => {
-  const { getSelectedProps, getExpandedProps } = props;
-
-  return (
+const Item = memo(({ noChildren, label, depth, expanded, selected, visible, getSelectedProps,  getExpandedProps}) => (
     <>
       {visible && (
-        <div {...getSelectedProps()} {...getStyle({ depth, selected })}>
+        <div {...getSelectedProps()}>
           <button {...getExpandedProps()}>{ expanded ? '-' : '+' }
           {label}
         </div>
       )}
     </>
-  );
-});
+  )
+);
 
 const Tree = () => {
   const selectedProps = useSelected();
