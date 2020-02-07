@@ -12,7 +12,7 @@ const api = {
     const items = [];
     for (let i = 0; i < total; i++) {
       const label = randomWords();
-      items.push({ itemId: `${label}-${uniqid()}`, label, depth });
+      items.push({ id: `${label}-${uniqid()}`, label, depth });
     }
 
     return items;
@@ -20,13 +20,13 @@ const api = {
 };
 
 const Item = memo(props => {
-  const { itemId, noChildren, label, depth, expanded, selected, setLoading, loading, visible, onExpand, getExpandedProps } = props;
+  const { id, noChildren, label, depth, expanded, selected, setLoading, loading, visible, onExpand, getExpandedProps } = props;
 
   const { onClick } = getExpandedProps();
   const onExpandClick = useCallback(() => {
     onClick();
-    !expanded && onExpand({ itemId, depth });
-  }, [onClick, itemId, depth, expanded, onExpand]);
+    !expanded && onExpand({ id, depth });
+  }, [onClick, id, depth, expanded, onExpand]);
 
   useEffect(() => {
     setLoading(loading);
@@ -50,13 +50,13 @@ const Item = memo(props => {
   );
 }, areEqualDebug);
 
-const isLoadNewData = (data, { itemId, depth }) => {
-  const itemIndex = data.findIndex(item => item.itemId === itemId);
+const isLoadNewData = (data, { id, depth }) => {
+  const itemIndex = data.findIndex(item => item.id === id);
   return data[itemIndex + 1] && data[itemIndex + 1].depth !== depth + 1;
 };
 
-const loadNewData = (data, { itemId, depth }) => {
-  const itemIndex = data.findIndex(item => item.itemId === itemId);
+const loadNewData = (data, { id, depth }) => {
+  const itemIndex = data.findIndex(item => item.id === id);
   return [...data.slice(0, itemIndex + 1), ...api.load({ depth: depth + 1 }), ...data.slice(itemIndex + 1)];
 };
 
@@ -66,14 +66,14 @@ export default () => {
   const { setLoading, ...loadingProps } = useLoading();
 
   const onExpand = useCallback(
-    ({ itemId, depth }) => {
+    ({ id, depth }) => {
       setData(data => {
-        if (isLoadNewData(data, { itemId, depth })) {
-          setLoading(itemId, true);
+        if (isLoadNewData(data, { id, depth })) {
+          setLoading(id, true);
           setTimeout(() => {
             setData(data => {
-              setLoading(itemId, false);
-              return loadNewData(data, { itemId, depth });
+              setLoading(id, false);
+              return loadNewData(data, { id, depth });
             });
           }, 1000);
         }
@@ -87,7 +87,7 @@ export default () => {
     <ThemeProvider theme={THEME.DARK}>
       <Wrapper>
         {data.map(item => (
-          <Item key={item.itemId} {...getItemProps({ ...item, setLoading, ...expandedProps, ...loadingProps })} onExpand={onExpand} />
+          <Item key={item.id} {...getItemProps({ ...item, setLoading, ...expandedProps, ...loadingProps })} onExpand={onExpand} />
         ))}
       </Wrapper>
     </ThemeProvider>

@@ -10,13 +10,13 @@ const setLoading = jest.fn();
 
 describe('getItemProps', () => {
   it('check params passing are returning', () => {
-    const result = getItemProps({ itemId: 'treenity', depth: 0, param1: 'param1', param2: 'param2' });
+    const result = getItemProps({ id: 'treenity', depth: 0, param1: 'param1', param2: 'param2' });
 
-    expect(result).toMatchObject({ itemId: 'treenity', depth: 0, param1: 'param1', param2: 'param2' });
+    expect(result).toMatchObject({ id: 'treenity', depth: 0, param1: 'param1', param2: 'param2' });
   });
 
   it('check visible is triggered with the right params', () => {
-    const result = getItemProps({ itemId: 'treenity', depth: 0, isVisible });
+    const result = getItemProps({ id: 'treenity', depth: 0, isVisible });
     expect(result.visible).toBeTruthy();
     expect(isVisible).toHaveBeenNthCalledWith(1, 'treenity', 0);
   });
@@ -37,19 +37,19 @@ describe('getItemProps', () => {
   });
 
   it('check isExpanded is triggered with the right params', () => {
-    const result = getItemProps({ itemId: 'treenity', depth: 0, isExpanded });
+    const result = getItemProps({ id: 'treenity', depth: 0, isExpanded });
     expect(result.expanded).toBeTruthy();
     expect(isExpanded).toHaveBeenNthCalledWith(1, 'treenity', 0);
   });
 
   it('check isLoading is triggered with the right params', () => {
-    const result = getItemProps({ itemId: 'treenity', depth: 0, isLoading });
+    const result = getItemProps({ id: 'treenity', depth: 0, isLoading });
     expect(result.loading).toBeTruthy();
     expect(isLoading).toHaveBeenNthCalledWith(1, 'treenity');
   });
 
   it('check isSelected is triggered with the right params', () => {
-    const result = getItemProps({ itemId: 'treenity', depth: 0, isSelected });
+    const result = getItemProps({ id: 'treenity', depth: 0, isSelected });
     expect(result.selected).toBeTruthy();
     expect(isSelected).toHaveBeenNthCalledWith(1, 'treenity');
   });

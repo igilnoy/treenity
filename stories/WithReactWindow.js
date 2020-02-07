@@ -17,7 +17,7 @@ const RowNode = memo(({ index, style, data }) => {
   );
 }, areEqual);
 
-const generateItemKey = (index, { items }) => items[index].itemId;
+const generateItemKey = (index, { items }) => items[index].id;
 
 const Item = memo(props => {
   const { noChildren, label, depth, expanded, selected, visible, getSelectedProps, getExpandedProps } = props;

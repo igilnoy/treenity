@@ -26,10 +26,10 @@ describe('getLoadingProps', () => {
 // import { memoize, values } from 'lodash';
 //
 // const getLoadingProps = memoize(
-//     (itemId, setLoading, expanded) => ({
+//     (id, setLoading, expanded) => ({
 //         getLoadingProps: () => ({
 //             onClick: () => {
-//                 setLoading(itemId, !expanded);
+//                 setLoading(id, !expanded);
 //             },
 //         }),
 //     }),

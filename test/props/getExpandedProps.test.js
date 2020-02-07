@@ -26,10 +26,10 @@ describe('getExpandedProps', () => {
 // import { memoize, values } from 'lodash';
 //
 // const getExpandedProps = memoize(
-//     (itemId, setExpanded, expanded) => ({
+//     (id, setExpanded, expanded) => ({
 //         getExpandedProps: () => ({
 //             onClick: () => {
-//                 setExpanded(itemId, !expanded);
+//                 setExpanded(id, !expanded);
 //             },
 //         }),
 //     }),

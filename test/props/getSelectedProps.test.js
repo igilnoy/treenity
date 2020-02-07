@@ -26,10 +26,10 @@ describe('getSelectedProps', () => {
 // import { memoize, values } from 'lodash';
 //
 // const getSelectedProps = memoize(
-//     (itemId, setSelected, expanded) => ({
+//     (id, setSelected, expanded) => ({
 //         getSelectedProps: () => ({
 //             onClick: () => {
-//                 setSelected(itemId, !expanded);
+//                 setSelected(id, !expanded);
 //             },
 //         }),
 //     }),

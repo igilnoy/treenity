@@ -1,10 +1,10 @@
 import { memoize, values } from 'lodash';
 
 const getSelectedProps = memoize(
-  (itemId, setSelected) => ({
+  (id, setSelected) => ({
     getSelectedProps: () => ({
       onClick: () => {
-        setSelected(itemId);
+        setSelected(id);
       },
     }),
   }),

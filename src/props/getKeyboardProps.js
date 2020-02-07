@@ -10,20 +10,20 @@ const selectorFnDefault = (type, elem) => {
 };
 
 const getKeyboardProps = memoize(
-  (itemId, setSelected, setExpanded) => ({
+  (id, setSelected, setExpanded) => ({
     getKeyboardProps: (selectorFn = selectorFnDefault) => ({
       onKeyDown: e => {
         e.persist();
         let elem;
         switch (e.key) {
           case 'ArrowRight':
-            setExpanded && setExpanded(itemId, true);
+            setExpanded && setExpanded(id, true);
             break;
           case 'ArrowLeft':
-            setExpanded && setExpanded(itemId, false);
+            setExpanded && setExpanded(id, false);
             break;
           case 'Enter':
-            setSelected && setSelected(itemId);
+            setSelected && setSelected(id);
             break;
           case 'ArrowUp':
             elem = selectorFn('ArrowUp', e.target);

@@ -8,12 +8,12 @@ export const useLoading = () => {
   useEffect(() => () => getLoadingProps.cache.clear(), []);
 
   const setLoading = useCallback(
-    (itemIds, isProgress) => {
-      itemIds = isArray(itemIds) ? itemIds : [itemIds];
+    (ids, isProgress) => {
+      ids = isArray(ids) ? ids : [ids];
 
       setLoadingIds(state => {
-        itemIds.forEach(itemId => {
-          isProgress ? state.add(itemId) : state.delete(itemId);
+        ids.forEach(id => {
+          isProgress ? state.add(id) : state.delete(id);
         });
 
         return new Set(state);
@@ -21,7 +21,7 @@ export const useLoading = () => {
     },
     [setLoadingIds]
   );
-  const isLoading = useCallback(itemId => loadingIds.has(itemId), [loadingIds]);
+  const isLoading = useCallback(id => loadingIds.has(id), [loadingIds]);
   return {
     setLoading,
     isLoading,

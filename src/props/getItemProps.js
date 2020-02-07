@@ -4,14 +4,14 @@ import getExpandedProps from './getExpandedProps';
 import getLoadingProps from './getLoadingProps';
 import getKeyboardProps from './getKeyboardProps';
 
-const getItemProps = ({ itemId, depth, setExpanded, setSelected, setLoading, isExpanded, isVisible, isSelected, isLoading, ...props }) => {
+const getItemProps = ({ id, depth, setExpanded, setSelected, setLoading, isExpanded, isVisible, isSelected, isLoading, ...props }) => {
   const nextProps = {
-    itemId,
+    id,
     depth,
-    ...(isVisible ? { visible: isVisible(itemId, depth) } : {}),
-    ...(isExpanded ? { expanded: isExpanded(itemId, depth) } : {}),
-    ...(isSelected ? { selected: isSelected(itemId) } : {}),
-    ...(isLoading ? { loading: isLoading(itemId) } : {}),
+    ...(isVisible ? { visible: isVisible(id, depth) } : {}),
+    ...(isExpanded ? { expanded: isExpanded(id, depth) } : {}),
+    ...(isSelected ? { selected: isSelected(id) } : {}),
+    ...(isLoading ? { loading: isLoading(id) } : {}),
     ...(setSelected ? { setSelected } : {}),
     ...(setLoading ? { setLoading } : {}),
     ...(setExpanded ? { setExpanded } : {}),
@@ -20,10 +20,10 @@ const getItemProps = ({ itemId, depth, setExpanded, setSelected, setLoading, isE
 
   return {
     ...nextProps,
-    ...(setSelected ? getSelectedProps(itemId, setSelected) : {}),
-    ...(setExpanded ? getExpandedProps(itemId, setExpanded, nextProps.expanded) : {}),
-    ...(setLoading ? getLoadingProps(itemId, setLoading) : {}),
-    ...getKeyboardProps(itemId, setSelected, setExpanded),
+    ...(setSelected ? getSelectedProps(id, setSelected) : {}),
+    ...(setExpanded ? getExpandedProps(id, setExpanded, nextProps.expanded) : {}),
+    ...(setLoading ? getLoadingProps(id, setLoading) : {}),
+    ...(setSelected || setExpanded ? getKeyboardProps(id, setSelected, setExpanded) : {}),
   };
 };
 

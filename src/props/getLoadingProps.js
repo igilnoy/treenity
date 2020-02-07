@@ -1,10 +1,10 @@
 import { memoize, values } from 'lodash';
 
 const getLoadingProps = memoize(
-  (itemId, setLoading) => ({
+  (id, setLoading) => ({
     getLoadingProps: () => ({
       onClick: () => {
-        setLoading(itemId, true);
+        setLoading(id, true);
       },
     }),
   }),

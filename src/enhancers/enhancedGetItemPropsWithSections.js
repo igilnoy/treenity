@@ -5,34 +5,34 @@ const TYPE_HEADER = 'HEADER';
 const TYPE_FOOTER = 'FOOTER';
 const isAddToFooters = ({ itemFooter, expanded, visible, ..._ }) => itemFooter && expanded && visible;
 const isAddToHeaders = ({ itemHeader, expanded, visible, ..._ }) => itemHeader && expanded && visible;
-const getFooterItemId = itemId => `${itemId}_${TYPE_FOOTER}_ITEM`;
-const getHeaderItemId = itemId => `${itemId}_${TYPE_HEADER}_ITEM`;
+const getFooterId = id => `${id}_${TYPE_FOOTER}`;
+const getHeaderId = id => `${id}_${TYPE_HEADER}`;
 const isHeader = type => type === TYPE_HEADER;
 const isFooter = type => type === TYPE_FOOTER;
 
-const getItem = ({itemId, ...props}, { Item }) => (Item ? <Item key={itemId} itemId={itemId} {...props} /> : props);
+const getItem = ({ id, ...props }, { Item }) => (Item ? <Item key={id} id={id} {...props} /> : { id, ...props });
 
 const getSectionItem = (type = TYPE_FOOTER, itemProps, renderedProps, { Header, Footer }) => {
-  const { origItemId, origItemProps, depth } = itemProps;
-  const { itemId: renderedItemId } = renderedProps;
-  const { isLoading, isSelected } = origItemProps;
-  const itemId = isHeader(type) ? getHeaderItemId(origItemId) : getFooterItemId(origItemId);
+  const { origId, origProps, depth } = itemProps;
+  const { id: renderedId } = renderedProps;
+  const { isLoading, isSelected } = origProps;
+  const id = isHeader(type) ? getHeaderId(origId) : getFooterId(origId);
 
   const props = {
-    ...origItemProps,
-    itemId,
-    origItemId,
-    renderedItemId,
+    ...origProps,
+    id,
+    origId,
+    renderedId,
     depth,
     footer: isFooter(type),
     header: isHeader(type),
     visible: true,
     expanded: true,
-    loading: isLoading ? isLoading(itemId) : false,
-    selected: isSelected ? isSelected(itemId) : false,
+    loading: isLoading ? isLoading(id) : false,
+    selected: isSelected ? isSelected(id) : false,
   };
 
-  return isHeader(type) && Header ? <Header {...props} key={itemId} /> : isFooter(type) && Footer ? <Footer {...props} key={itemId} /> : props;
+  return isHeader(type) && Header ? <Header {...props} key={id} /> : isFooter(type) && Footer ? <Footer {...props} key={id} /> : props;
 };
 
 const getHeaderSection = (itemProps, props, options) => getSectionItem(TYPE_HEADER, itemProps, props, options);
@@ -41,11 +41,12 @@ const getFooterSection = (itemProps, props, options) => getSectionItem(TYPE_FOOT
 const enhancedGetItemPropsWithSections = () => {
   let footers = [];
   let headers = [];
+
   return (props, options = {}) => {
     const itemProps = getItemProps(props);
     const { isLast } = props;
     if (isLast === undefined) console.warn('isLast props is missing from props, please make sure to add it, please refer to docs for more info');
-    const { itemId, depth, expanded } = itemProps;
+    const { id, depth, expanded } = itemProps;
 
     const items = [getItem(itemProps, options)];
     const { depth: lastDepthInFooters } = footers[footers.length - 1] || {};
@@ -53,8 +54,8 @@ const enhancedGetItemPropsWithSections = () => {
     if (lastDepthInFooters >= depth) items.unshift(getFooterSection(footers.pop(), itemProps, options));
     if (headers.length) items.unshift(getHeaderSection(headers.pop(), itemProps, options));
 
-    isAddToFooters(itemProps) && footers.push({ depth, origItemId: itemId, expanded, origItemProps: props });
-    isAddToHeaders(itemProps) && headers.push({ depth, origItemId: itemId, expanded, origItemProps: props });
+    isAddToFooters(itemProps) && footers.push({ depth, origId: id, expanded, origProps: props });
+    isAddToHeaders(itemProps) && headers.push({ depth, origId: id, expanded, origProps: props });
 
     if (isLast) {
       headers = headers.reverse().filter(({ expanded, ...headerProps }) => {

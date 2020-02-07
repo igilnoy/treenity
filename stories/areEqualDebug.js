@@ -5,7 +5,7 @@ const areEqualDebug = (prevProps, nextProps) => {
       const isStyle = prevPropName === 'style';
 
       console.log(
-        `%crendering %c${prevProps.itemId} %csince %c${prevPropName} %chas changed from %c${
+        `%crendering %c${prevProps.id} %csince %c${prevPropName} %chas changed from %c${
           typeof prevPropValue === 'function' ? 'function' : prevPropValue
         } %cto %c${typeof nextProps[prevPropName] === 'function' ? 'function' : nextProps[prevPropName]}`,
         !isStyle ? 'font-weight: normal;color: black;' : 'color: #CCC',
