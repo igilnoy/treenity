@@ -43,7 +43,7 @@ const Item = memo(({ label, expanded, visible, getSelectedProps,  getExpandedPro
     <>
       {visible && (
         <div {...getSelectedProps()}>
-          <button {...getExpandedProps()}>{ expanded ? '-' : '+' }
+          <button {...getExpandedProps()}>{ expanded ? '-' : '+' }</button>
           {label}
         </div>
       )}
