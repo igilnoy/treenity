@@ -39,17 +39,16 @@ yarn add treenity
 import React, { memo } from 'react';
 import { getItemProps, useExpanded, useSelected } from 'treenity';
 
-const Item = memo(({ label, expanded, visible, getSelectedProps,  getExpandedProps}) => (
-    <>
-      {visible && (
-        <div {...getSelectedProps()}>
-          <button {...getExpandedProps()}>{ expanded ? '-' : '+' }</button>
-          {label}
-        </div>
-      )}
-    </>
-  )
-);
+const Item = memo(({ label, expanded, visible, getSelectedProps, getExpandedProps }) => (
+  <>
+    {visible && (
+      <div {...getSelectedProps()}>
+        <button {...getExpandedProps()}>{expanded ? '-' : '+'}</button>
+        {label}
+      </div>
+    )}
+  </>
+));
 
 const Tree = () => {
   const selectedProps = useSelected();
@@ -63,6 +62,33 @@ const Tree = () => {
     </>
   );
 };
+```
+
+# Data Structure
+
+The idea behind this package is not to stick with any data structure, you can provide any structure you like. The motivation behind it that i was working on several projects that were using a tree but each one of them had a different structure, one add a "regular" structure and the second had a flat structure, and i wanted to have something generic that i can use for both.
+
+In addition i didnt want to provide any UI items since each implementation is different, one was using `styled-components` and other `css modules`, so the responsability for building the UI components is on you!! The package provides some helpers and a lot of examples to help you do it right.
+
+There are 2 parameters that are required for basic structuring of the tree:
+
+| Name  | Type   | Desc                                                                                                 |
+| ----- | ------ | ---------------------------------------------------------------------------------------------------- |
+| id    | string | a _unique_ value of the item rendered                                                                |
+| depth | number | the depth of the node, this parameter is important for setting up the state of each item in the tree |
+
+
+For example:
+
+```javascript
+[
+  { depth: 0, id: 'Treenity', label: 'Treenity' },
+  { depth: 1, id: 'src', label: 'src' },
+  { depth: 2, id: 'components', label: 'components' },
+  { depth: 3, id: 'grid', label: 'grid' },
+  { depth: 1, id: 'tests', label: 'tests' },
+  { depth: 1, id: 'other', label: 'other' },
+];
 ```
 
 combineClickProps
