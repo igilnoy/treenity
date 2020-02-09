@@ -31,7 +31,7 @@ npm install treenity
 yarn add treenity
 ```
 
-#Basic Usage
+# Basic Usage
 
 ```javascript
 import React, { memo } from 'react';
