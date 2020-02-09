@@ -12,16 +12,14 @@ Please use it wisely :)
 
 ### Table Of Contents
 
-1. Installation
-2. Basic Usage
-3. Data Structure
-4. Hooks
-5. getItemProps
-6. enhancers
-7. HOC
-8. advanced usage
-
-#### need to talk about clearing the cache of lodash.memoize - if repalcing the cache type - how do we handle ?
+**[Installation](installation)**\
+**[Basic Usage](basic-usage)**\
+**[Data Structure](#data-structure)**\
+**[Hooks](#hooks)**\
+**[getItemProps](#getItemProps)**\
+**[Sections](#sections)**\
+**[HOC](#hoc)**\
+**[Advanced Usage](#advanced-usage)**\
 
 # Installation
 
@@ -33,7 +31,7 @@ npm install treenity
 yarn add treenity
 ```
 
-# Basic Usage
+#Basic Usage
 
 ```javascript
 import React, { memo } from 'react';
@@ -91,5 +89,69 @@ For example:
 ];
 ```
 
+# Hooks
+
+
+For managing the state of your tree component, the package provides the following hooks: `useSelected`, `useExpanded` and `useLoading`
+
+Each hook expose some helpers functions that for managing the state.
+
+## useSelected
+ 
+```javascript
+const {setSelected, isSelected} = useSelected();
+```
+
+#### setSelected
+> function(id: string) | optional
+
+Set the selected item by it's id. If passing no value then nothing will be selected
+
+#### isSelected
+> function(id: string): boolean | required
+
+check if specific item is selected
+
+## useExpanded
+ 
+```javascript
+const {setExpanded, isExpanded, isVisible} = useExpanded();
+```
+
+#### setExpanded
+> function(id: string, isExpanded: boolean) | required
+
+Set the expanded item by it's id.
+
+#### isVisible
+> function(id: string): boolean | required
+
+check if specific item is visible
+
+#### isExpanded
+> function(id: string): boolean | required
+
+check if specific item is expanded
+
+Please note: If you will like to use this `isExpanded` and `isVisible` while managing your own custom logic, make sure to call both methods - start with `isVisible` method and end with `isExpanded` method - order is important!.
+
+## useLoading
+ 
+```javascript
+const { setLoading, isLoading } = useLoading();
+```
+
+#### setLoading
+> function(id: string, isLoading: boolean) | required
+
+Set the loading item by it's id.
+
+#### isLoading
+> function(id: string): boolean | required
+
+check if specific item is loaded
+
+
 combineClickProps
 enhancedGetItemPropsWithSections
+#### need to talk about clearing the cache of lodash.memoize - if replacing the cache type - how do we handle ?
