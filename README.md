@@ -12,8 +12,8 @@ Please use it wisely :)
 
 ### Table Of Contents
 
-**[Installation](installation)**\
-**[Basic Usage](basic-usage)**\
+**[Installation](#installation)**\
+**[Basic Usage](#basic-usage)**\
 **[Data Structure](#data-structure)**\
 **[Hooks](#hooks)**\
 **[getItemProps](#getItemProps)**\
