@@ -1,6 +1,6 @@
 {
   "name": "treenity",
-  "version": "0.0.0-development",
+  "version": "0.0.1",
   "main": "dist/treenity.js",
   "scripts": {
     "lint": "eslint ./src ./stories",

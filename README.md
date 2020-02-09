@@ -75,7 +75,6 @@ There are 2 parameters that are required for basic structuring of the tree:
 | id    | string | a _unique_ value of the item rendered                                                                |
 | depth | number | the depth of the node, this parameter is important for setting up the state of each item in the tree |
 
-
 For example:
 
 ```javascript
@@ -91,44 +90,48 @@ For example:
 
 # Hooks
 
-
 For managing the state of your tree component, the package provides the following hooks: `useSelected`, `useExpanded` and `useLoading`
 
 Each hook expose some helpers functions that for managing the state.
 
 ## useSelected
- 
+
 ```javascript
-const {setSelected, isSelected} = useSelected();
+const { setSelected, isSelected } = useSelected();
 ```
 
 #### setSelected
+
 > function(id: string) | optional
 
 Set the selected item by it's id. If passing no value then nothing will be selected
 
 #### isSelected
+
 > function(id: string): boolean | required
 
 check if specific item is selected
 
 ## useExpanded
- 
+
 ```javascript
-const {setExpanded, isExpanded, isVisible} = useExpanded();
+const { setExpanded, isExpanded, isVisible } = useExpanded();
 ```
 
 #### setExpanded
+
 > function(id: string, isExpanded: boolean) | required
 
 Set the expanded item by it's id.
 
 #### isVisible
+
 > function(id: string): boolean | required
 
 check if specific item is visible
 
 #### isExpanded
+
 > function(id: string): boolean | required
 
 check if specific item is expanded
@@ -136,22 +139,96 @@ check if specific item is expanded
 Please note: If you will like to use this `isExpanded` and `isVisible` while managing your own custom logic, make sure to call both methods - start with `isVisible` method and end with `isExpanded` method - order is important!.
 
 ## useLoading
- 
+
 ```javascript
 const { setLoading, isLoading } = useLoading();
 ```
 
 #### setLoading
+
 > function(id: string, isLoading: boolean) | required
 
 Set the loading item by it's id.
 
 #### isLoading
+
 > function(id: string): boolean | required
 
 check if specific item is loaded
 
+#getItemProps
 
-combineClickProps
+This method does all the magic by calculating each item state. The idea is to pass each of the state methods by using each of the hooks. The method triggers each of the hooks method automatically.
+
+For example:
+
+```javascript
+
+const selectedProps = useSelected();
+const expandedProps = useExpanded();
+const loadingProps - useLoading();
+
+<Item {...getItemProps({...item, ...selectedProps, ...expandedProps, ...loadingProps})}/>
+
+```
+
+#### Props returned by the method:
+
+| Name        | Type     | Desc |
+| ----------- | -------- | ---- |
+| id          | string   |
+| depth       | number   |      |
+| visible     | boolean  |      |
+| expanded    | boolean  |      |
+| selected    | boolean  |      |
+| loading     | boolean  |      |
+| setSelected | function |      |
+| setExpanded | function |      |
+| setLoading  | function |      |
+
+In addition there are extra helpers function you can use in your components for managing the click state
+
+> getSelectedProps()
+
+This method return an onClick event that will be automatically attached to the component and trigger the selection method
+
+> getExpandedProps()
+
+This method return an onClick event that will be automatically attached to the component and trigger the expanded method
+
+>  getKeyboardProps()
+
+This method return an onKedown event that will be automatically attached to the component and will enable keyboard navigation on the tree items
+
+```javascript
+
+const Item = memo(({ label, visible, ...props }) => {
+  const { getSelectedProps, getExpandedProps, getKeyboardProps } = props;
+
+  return (
+    <>
+      {visible && (
+        <div {...getKeyboardProps()} {...getSelectedProps()}}>
+          <button {...getExpandedProps()}>+</button>
+          {label}
+        </div>
+      )}
+    </>
+  );
+}, areEqualDebug);
+
+```
+
+#### combineClickProps
+
+In case you want to trigger both selected and expanded state together you can use the following helper function 
+
+```javascript
+const { getExpandedProps, getSelectedProps } = props;
+const onClick = useCallback(() => combineClickProps({ getExpandedProps, getSelectedProps })(), [getExpandedProps, getSelectedProps]);
+```
+
+
 enhancedGetItemPropsWithSections
+
 #### need to talk about clearing the cache of lodash.memoize - if replacing the cache type - how do we handle ?
