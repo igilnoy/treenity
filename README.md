@@ -12,14 +12,19 @@ Please use it wisely :)
 
 ### Table Of Contents
 
-**[Installation](#installation)**\
-**[Basic Usage](#basic-usage)**\
-**[Data Structure](#data-structure)**\
-**[Hooks](#hooks)**\
-**[getItemProps](#getItemProps)**\
-**[Sections](#sections)**\
-**[HOC](#hoc)**\
-**[Advanced Usage](#advanced-usage)**\
+* [Installation](#installation)
+* [Basic Usage](#basic-usage)
+* [Data Structure](#data-structure)
+* [Hooks](#hooks)
+    * [useSelected](#useselected)
+    * [useExpanded](#useexpanded)
+    * [useLoading](#useloading)
+* [getItemProps](#getitemprops)
+    * [combineClickProps](#combineClickProps)
+* [Sections](#sections)
+    * [enhancedGetItemPropsWithSections](#enhancedGetItemPropsWithSections)
+    * [HOC](#hoc)
+* [Advanced Usage](#advanced-usage)
 
 # Installation
 
@@ -228,6 +233,19 @@ const { getExpandedProps, getSelectedProps } = props;
 const onClick = useCallback(() => combineClickProps({ getExpandedProps, getSelectedProps })(), [getExpandedProps, getSelectedProps]);
 ```
 
+
+## Sections
+
+Sections is a way to add to each item header and footer since sometimes you will want to add extra information around your item which are not part of the data structure - for example you will wanna add a pagination part inside of each item.
+The header will be displayed on top of the item and the footer at the bottom of the item - you can use both.
+
+In order to view the section you will need to define on each item `itemHeader` and `itemFooter` params.
+
+For example:
+
+```javascript
+  { id: 'Treenity', label: 'Treenity', depth: 0, more: true, itemHeader: true, itemFooter: true },
+```
 
 enhancedGetItemPropsWithSections
 
