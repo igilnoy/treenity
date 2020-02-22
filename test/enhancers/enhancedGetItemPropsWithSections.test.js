@@ -19,11 +19,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     results = flatten(results);
     expect(results).toHaveLength(5);
     expect(results[1]).toMatchObject({
-      id: 'a_HEADER_ITEM',
+      id: 'a_HEADER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a-1',
+      origId: 'a',
+      renderedId: 'a-1',
       footer: false,
       header: true,
       loading: false,
@@ -60,11 +60,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     results = flatten(results);
     expect(results).toHaveLength(5);
     expect(results[4]).toMatchObject({
-      id: 'a_FOOTER_ITEM',
+      id: 'a_FOOTER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a-1-2',
+      origId: 'a',
+      renderedId: 'a-1-2',
       footer: true,
       header: false,
       loading: false,
@@ -86,11 +86,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     results = flatten(results);
     expect(results).toHaveLength(6);
     expect(results[1]).toMatchObject({
-      id: 'a_HEADER_ITEM',
+      id: 'a_HEADER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a-1',
+      origId: 'a',
+      renderedId: 'a-1',
       footer: false,
       header: true,
       loading: false,
@@ -98,11 +98,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     });
 
     expect(results[5]).toMatchObject({
-      id: 'a_FOOTER_ITEM',
+      id: 'a_FOOTER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a-1-2',
+      origId: 'a',
+      renderedId: 'a-1-2',
       footer: true,
       header: false,
       loading: false,
@@ -125,11 +125,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     results = flatten(results);
     expect(results).toHaveLength(7);
     expect(results[1]).toMatchObject({
-      id: 'a_HEADER_ITEM',
+      id: 'a_HEADER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a-1',
+      origId: 'a',
+      renderedId: 'a-1',
       footer: false,
       header: true,
       loading: false,
@@ -137,11 +137,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     });
 
     expect(results[5]).toMatchObject({
-      id: 'a_FOOTER_ITEM',
+      id: 'a_FOOTER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'b',
+      origId: 'a',
+      renderedId: 'b',
       footer: true,
       header: false,
       loading: false,
@@ -158,11 +158,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     results = flatten(results);
     expect(results).toHaveLength(3);
     expect(results[1]).toMatchObject({
-      id: 'a_HEADER_ITEM',
+      id: 'a_HEADER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a',
+      origId: 'a',
+      renderedId: 'a',
       footer: false,
       header: true,
       loading: false,
@@ -170,11 +170,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     });
 
     expect(results[2]).toMatchObject({
-      id: 'a_FOOTER_ITEM',
+      id: 'a_FOOTER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a',
+      origId: 'a',
+      renderedId: 'a',
       footer: true,
       header: false,
       loading: false,
@@ -198,11 +198,11 @@ describe('enhancedGetItemPropsWithSections', () => {
     expect(results[0].$$typeof).toBeDefined();
     expect(results[1].$$typeof).toBeDefined();
     expect(results[1].props).toMatchObject({
-      id: 'a_HEADER_ITEM',
+      id: 'a_HEADER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a',
+      origId: 'a',
+      renderedId: 'a',
       footer: false,
       header: true,
       loading: false,
@@ -211,11 +211,11 @@ describe('enhancedGetItemPropsWithSections', () => {
 
     expect(results[2].$$typeof).toBeDefined();
     expect(results[2].props).toMatchObject({
-      id: 'a_FOOTER_ITEM',
+      id: 'a_FOOTER',
       expanded: true,
       visible: true,
-      origItemId: 'a',
-      renderedItemId: 'a',
+      origId: 'a',
+      renderedId: 'a',
       footer: true,
       header: false,
       loading: false,
