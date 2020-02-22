@@ -1,12 +1,17 @@
 {
   "name": "treenity",
-  "version": "0.0.1",
-  "main": "dist/treenity.js",
+  "version": "0.0.2",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
   "scripts": {
     "lint": "eslint ./src ./stories",
     "storybook": "start-storybook",
+    "storybook:build": "build-storybook --output-dir demo",
     "test": "jest",
-    "build": "babel src --out-file dist/treenity.js --source-maps",
+    "build:cjs": "babel src --out-dir dist/cjs --source-maps",
+    "build:mjs": "babel --config-file=./babel.config.mjs.json src --out-dir dist/mjs  --source-maps",
+    "build": "yarn build:cjs && yarn build:mjs",
+    "prepublishOnly": "yarn build",
     "semantic-release": "semantic-release"
   },
   "repository": "git@github.com:treenity-js/treenity.git",
