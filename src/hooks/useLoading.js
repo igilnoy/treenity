@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 import getLoadingProps from '../props/getLoadingProps';
 
 export const useLoading = () => {

@@ -1,4 +1,5 @@
-import { memoize, values } from 'lodash';
+import memoize from 'lodash/memoize';
+import values from 'lodash/values';
 
 const getLoadingProps = memoize(
   (id, setLoading) => ({

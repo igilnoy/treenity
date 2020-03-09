@@ -1,4 +1,6 @@
-import { memoize, values } from 'lodash';
+import memoize from 'lodash/memoize';
+import values from 'lodash/values';
+
 
 const selectorFnDefault = (type, elem) => {
   switch (type) {

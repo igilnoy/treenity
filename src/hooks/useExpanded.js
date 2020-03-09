@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState, useEffect } from 'react';
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 import getExpandedProps from '../props/getExpandedProps';
 
 export const useExpanded = () => {

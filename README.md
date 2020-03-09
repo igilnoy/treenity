@@ -1,12 +1,12 @@
 # treenity
 
-[logo]: ./assets/logo.svg 'Treenity'
+![logo](https://res.cloudinary.com/dxjccseos/image/upload/w_170,f_auto/treenity-logo)
 
-Treenity is a flexable, performant and stripped UI component that is not dependent on any data structure, CSS or any UI library.
+Treenity is a flexible, performant and unstyled component that is not dependent on any data structure, CSS or any UI library.
 
-The component only offer set of hooks to manage the state, a HOC and an enhancer method to add the ability to add sections to each nodes.
+The component offer a set of hooks for managing the tree state and HOC's and an enhancer for managing sections inside each item.
 
-There are some examples that cover some common use cases such as styling and windowing for performance boost.
+In the repo you can explore few examples that covers some common use cases such as styling and windowing for performance boost.
 
 Please use it wisely :)
 
@@ -298,5 +298,10 @@ const Tree = () => {
 ```
 
 ### withSections
+```javascript
+const ItemWithSection = withSections(Item, { Header, Footer });
+```
+
+
 
 #### need to talk about clearing the cache of lodash.memoize - if replacing the cache type - how do we handle ?
