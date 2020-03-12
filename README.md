@@ -2,6 +2,8 @@
 
 ![logo](https://res.cloudinary.com/dxjccseos/image/upload/w_170,f_auto/treenity-logo)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4bcf05dc-54c2-46da-9ca9-e3b4b59cdabe/deploy-status)](https://app.netlify.com/sites/treenity/deploys)
+
 Treenity is a flexible, performant and unstyled component that is not dependent on any data structure, CSS or any UI library.
 
 The component offer a set of hooks for managing the tree state and HOC's and an enhancer for managing sections inside each item.
